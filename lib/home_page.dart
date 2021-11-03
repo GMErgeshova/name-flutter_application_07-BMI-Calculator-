@@ -39,52 +39,54 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: const Color(0xff0b0e21),
-        elevation: 0,
+        //backgroundColor: const Color(0xff0b0e21),
+        //elevation: 0,
         title: Text(
           'BMI Calculator'.toUpperCase(),
         ),
-        centerTitle: true,
+        //centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: ReusableCard(
-                  onTap: () {
-                    setState(() {
-                      gender = Gender.male;
-                    });
-                  },
-                  bgColor: gender == Gender.male
-                      ? kActiveCardColour
-                      : kInactiveCardColour,
-                  // ignore: prefer_const_constructors
-                  child: iconContent(
-                    text: 'MALE',
-                    icon: FontAwesomeIcons.mars,
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: ReusableCard(
+                    onTap: () {
+                      setState(() {
+                        gender = Gender.male;
+                      });
+                    },
+                    bgColor: gender == Gender.male
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
+                    // ignore: prefer_const_constructors
+                    child: iconContent(
+                      text: 'MALE',
+                      icon: FontAwesomeIcons.mars,
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: ReusableCard(
-                  onTap: () {
-                    setState(() {
-                      gender = Gender.female;
-                    });
-                  },
-                  bgColor: gender == Gender.female
-                      ? kActiveCardColour
-                      : kInactiveCardColour,
-                  child: iconContent(
-                    icon: FontAwesomeIcons.venus,
-                    text: 'FEMALE',
+                Expanded(
+                  child: ReusableCard(
+                    onTap: () {
+                      setState(() {
+                        gender = Gender.female;
+                      });
+                    },
+                    bgColor: gender == Gender.female
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
+                    child: iconContent(
+                      icon: FontAwesomeIcons.venus,
+                      text: 'FEMALE',
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Expanded(
             child: ReusableCard(
@@ -110,11 +112,11 @@ class _HomePageState extends State<HomePage> {
                       activeTrackColor: kRed,
                       inactiveTrackColor: Colors.white,
                       thumbColor: kRed,
-                      overlayColor: Color(0x29EB1555),
+                      overlayColor: const Color(0x29EB1555),
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 18.0),
+                          const RoundSliderThumbShape(enabledThumbRadius: 18.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
                     child: Slider(
                       // activeColor: Colors.red,
@@ -133,44 +135,46 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: ReusableCard(
-                  bgColor: kCardBGColor,
-                  child: WeightAgeWidget(
-                    isCm: true,
-                    minus: () {
-                      weight--;
-                      setState(() {});
-                    },
-                    plus: () {
-                      weight++;
-                      setState(() {});
-                    },
-                    text: 'WEIGHT(салмагы)',
-                    number: weight,
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: ReusableCard(
+                    bgColor: kCardBGColor,
+                    child: WeightAgeWidget(
+                      isCm: true,
+                      minus: () {
+                        weight--;
+                        setState(() {});
+                      },
+                      plus: () {
+                        weight++;
+                        setState(() {});
+                      },
+                      text: 'WEIGHT(салмагы)',
+                      number: weight,
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: ReusableCard(
-                  bgColor: kCardBGColor,
-                  child: WeightAgeWidget(
-                    minus: () {
-                      age--;
-                      setState(() {});
-                    },
-                    plus: () {
-                      age++;
-                      setState(() {});
-                    },
-                    text: 'AGE(жашы)',
-                    number: age,
+                Expanded(
+                  child: ReusableCard(
+                    bgColor: kCardBGColor,
+                    child: WeightAgeWidget(
+                      minus: () {
+                        age--;
+                        setState(() {});
+                      },
+                      plus: () {
+                        age++;
+                        setState(() {});
+                      },
+                      text: 'AGE(жашы)',
+                      number: age,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           BottomButton(
             onTap: () {
@@ -195,6 +199,15 @@ class _HomePageState extends State<HomePage> {
             buttonTitle: 'SEE RESULT',
           )
         ],
+      ),
+    );
+  }
+
+  Container _buildContainer2() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.redAccent,
+        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
